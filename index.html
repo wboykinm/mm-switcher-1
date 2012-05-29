@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>DC's Changing Landscape</title>
+    <title>Honeywell MDE</title>
     <link rel="stylesheet" href="fonts/fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/map.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -24,35 +24,37 @@
             </div>
         </div>
     </div>
-    
+	
     <div id="projects" class="layers">
-       <a data-control="layer" href="#building">Building Permits, 2011</a>
-       <a data-control="layer" href="#construction">City Construction Projects, 2011</a>
+       <a data-control="layer" href="#solar">Solar Potential</a>
+       <a data-control="layer" href="#wind">Wind Potential</a>
     </div>
     <div id="crime" class="layers">
-       <a data-control="layer" href="#crime">Total Crime, 2011</a>
-       <a data-control="layer" href="#robbery">Robbery, 2011</a>
-       <a data-control="layer" href="#theft">Theft, 2011</a>
-       <a data-control="layer" href="#auto">Theft from Auto, 2011</a>
-	   <a data-control="layer" href="#blank">demo 1</a>
-
+       <a data-control="layer" href="#muni">Municipalities</a>
+       <a data-control="layer" href="#public">Public K-12</a>
+       <a data-control="layer" href="#private">Private K-12</a>
+       <a data-control="layer" href="#highered">Higher Education</a>
+	   <a data-control="layer" href="#hosp">Hospitals</a>
+	   <a data-control="layer" href="#dod">DOD Installations</a>
+	   <a data-control="layer" href="#all">All Layers</a>
     </div>
+	
     <div id="map" class="map">
         <div class="wax-legends">
             <div class="wax-legend" style="display: block; ">
                 <div class="scale">
                     <label>Marketing Scores</label>
-                    <div><img src="img/scalehon1.png" /></div>
-                    <div>
+                    <div><img src="img/scalehon2.png" /></div><br />
+                    <!--<div>
                         <span>< 15</span>
                         <span>15-20</span>
                         <span>20-25</span>
                         <span>25-30</span>
                         <span>> 30</span>
-                    </div>
+                    </div>-->
                 </div>
                 <div>
-                    <label><i>Map points are sized relative to category population size</i></label>
+                    <label><font size="0.05%">Map points are sized relative to category population size</font></label>
                 </div>
             </div>
         </div>
@@ -73,13 +75,13 @@
         // Make a new map in the #map element
         var main = Map('map', {
             // Specify the MapBox API url
-            api: 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-light,mapbox.dc-property-values.jsonp',
+            api: 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-lacquer.jsonp',
             center: {
-                lat: 38.9090033656251,      // Intial center point and zoom level.
-                lon: -77.014396158891,      // To find coordinates and zoom levels
-                zoom: 13                    // try: http://www.getlatlon.com
+                lat: 33.0,       // Intial center point and zoom level.
+                lon: -96,      // To find coordinates and zoom levels
+                zoom: 4                    // try: http://www.getlatlon.com
             },
-            zoomRange: [0, 15],             // Limit zooming on the map to these levels
+            zoomRange: [1, 13],             // Limit zooming on the map to these levels
             features: [                     // Map features (see readme.md)
                 'zoomwheel',
                 'movetips',
@@ -94,28 +96,28 @@
         // the href hash of an element with a `data-control='layer'`, ex:
         // <a data-control="layer" href="#building">Building Permits, 2011</a>
         main.layers({
-            building: {                     // The name of the layer
+            solar: {                     // The name of the layer
                 // If api is specified, this map layer will be displayed
                 // on top of the base map specified when the map was initialized
-                api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-building.jsonp',
+                api: 'http://a.tiles.mapbox.com/v3/landplanner.enstrat_dni_101111b.jsonp',
                 center: {                   // Optionally reposition the map.
-                    lat: 38.910606275724,   // New center point and zoom level
-                    lon: -77.00126406355,   // for the map. Specific either
-                    zoom: 14,               // lat and lon, zoom, or both.
+                    lat: 31.0,   // New center point and zoom level
+                    lon: -95,   // for the map. Specific either
+                    zoom: 4,               // lat and lon, zoom, or both.
                     ease: 500               // Optional time to animimate moving
                 }                           // the map in milliseconds.
             },
-            construction: { 
-                api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-construction.jsonp',
-                center: { zoom: 12, ease: 1000 }
+            wind: { 
+                api: 'http://a.tiles.mapbox.com/v3/landplanner.conus-wind-120711.jsonp',
+                center: { lat: 31.0, lon: -95, zoom: 5, ease: 1000 }
             },
-            crime: { 
-                api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-crime.jsonp',
-                center: { zoom: 13, ease: 1000 }
-             },
-            robbery: { api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-robbery.jsonp' },
-            theft: { api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-theft.jsonp' },
-            auto: { api: 'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-auto.jsonp' }
+            muni: { api: 'http://api.tiles.mapbox.com/v2/honeywell.muni_conus_120511,honeywell.muni_ak_120811,honeywell.muni_hi_120811.jsonp' },
+            public: { api: 'http://api.tiles.mapbox.com/v2/honeywell.publick12_conus_120611,honeywell.publick12_ak_120811,honeywell.publick12_hi_120811.jsonp' },
+            private: { api: 'http://api.tiles.mapbox.com/v2/honeywell.private_conus_120711,honeywell.private_ak_120811,honeywell.private_hi_120811.jsonp' },
+			highered: { api: 'http://api.tiles.mapbox.com/v2/honeywell.highered_conus_120511,honeywell.highered_ak_120811,honeywell.highered_hi_120811.jsonp' },
+			hosp: { api: 'http://api.tiles.mapbox.com/v2/honeywell.hospitals_conus_120711,honeywell.hospitals_ak_120811,honeywell.hospitals_hi_120811.jsonp' },
+			dod: { api: 'http://api.tiles.mapbox.com/v2/honeywell.dod_conus_120711,honeywell.dod_ak_120811,honeywell.dod_hi_120811,honeywell.dod_pr_120811.jsonp' },
+			all: { api: 'http://api.tiles.mapbox.com/v2/honeywell.all_conus_120711,honeywell.all_ak_120811,honeywell.all_hi_120811,honeywell.all_pr_120811.jsonp' }
          });
                  
     </script>

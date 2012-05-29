@@ -105,12 +105,12 @@ body > div {
     width: 150px;
     left: 0;
     float: left;
-    background: url(../img/logo.png) 30px 60px no-repeat;
+    background: url(../img/solar.jpg) 20px 40px no-repeat;
     }
 
 #content {
 	position: absolute;
-    height: 200px;
+    height: 160px;
 	width: 100%;
 	bottom: 0px;
     background: rgb(255,255,255); /* old ie */
@@ -145,16 +145,16 @@ body > div {
     }
     
 .layers a:hover, .layers a:focus, .layers a.active {
-    border-left: 5px solid #333;
-    background: #2da0ef;
+    border-left: 5px solid #9ACD32;
+    background: #333;
     color: white;
     }
 
 .layers#crime {top: 220px;}
 
 #crime.layers a:hover, #crime.layers a:focus, #crime.layers a.active {
-    border-left: 5px solid #333;
-    background: #e34f3f;
+    border-left: 5px solid #9ACD32;
+    background: #333;
     color: white;
     }
     
@@ -298,17 +298,19 @@ a.zoomer {
     right: 10px;
     height: 125px;
     overflow-x: hidden;
-    bottom: 215px;
+    bottom: 165px;
     font-size: 11px;
+	color: #fff;
 	font: .9em/1.5em 'OpenSans', sans-serif;
-    }
+	}
     
 .wax-legends a {
-    color: rgb(51, 51, 51);
+    color: #fff;
     }
 
 .wax-legends .wax-legend {
     width: 275px;
+	background: #333;
     }
 
 .wax-legends .scale img { 
@@ -343,7 +345,7 @@ a.zoomer {
     }
 
 .wax-attribution {
-    bottom: 205px;
+    bottom: 165px;
     }
 
 .wax-share h3 {
